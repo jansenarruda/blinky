@@ -191,6 +191,10 @@ https://shop.trenz-electronic.de/en/TEI0001-03-08-C8-MAX1000-IoT-Maker-Board-8KL
 
 https://www.microsemi.com/existing-parts/parts/150789
 
+## MYIR FZ3 - Deep Learning Accelerator Card
+
+http://www.myirtech.com/list.asp?id=630
+
 ### nexys_4
 
 https://reference.digilentinc.com/reference/programmable-logic/nexys-4/start
@@ -210,6 +214,15 @@ http://www.armadeus.org/wiki/index.php?title=OPOS6UL_SP
 ### pipistrello
 
 http://pipistrello.saanlima.com/index.php?title=Welcome_to_Pipistrello
+
+### QMTECH Wukong Board Artix-7 XC7A100T & XC7A200T
+The Wukong board have two revisions : [Artix-7 XC7A100T](https://github.com/ChinaQMTECH/QM_XC7A100T_WUKONG_BOARD/blob/master/QMTECH_Artix-7_XC7A100T_Wukong_Board_User_Manual(Hardware)_V01.pdf) and Artix-7 XC7A[100T](https://github.com/ChinaQMTECH/XC7A100T-200T_Wukong_Board/blob/main/User_Manual_XC7A100T/QMTECH_Artix-7_XC7A100T_Wukong_Board_V2_User_Manual(Hardware)_V01.pdf)-[200T](https://github.com/ChinaQMTECH/XC7A100T-200T_Wukong_Board/blob/main/User_Manual_XC7A200T/QMTECH_Artix-7_XC7A200T_Wukong_Board_V2_User_Manual(Hardware)_V01.pdf) . The first revision have the 50 MHz clock on the wrong pin and don't have micro sd. 
+
+Targets are `Wukong_v1` for revision 1 , `Wukong_100t_v2` and `Wukong_200t_v2` for revision 2. Those boards can be programmed with openFPGALoader.  
+
+### RZ-EasyFPGA A2.x
+
+http://fpga.redliquid.pl/
 
 ### S7 Mini
 
@@ -231,6 +244,15 @@ https://tangnano.sipeed.com/en/
 
 https://www.crowdsupply.com/tinyfpga/tinyfpga-bx
 
+### ultra96_v2
+
+https://www.avnet.com/wps/portal/us/products/avnet-boards/avnet-board-families/ultra96-v2/
+
+Note: There is no on-board clock for Zynq PL. Therefore, in this example PL clock is generated and supplied from
+Zynq PS in the block design. Block design tcl script is generated on Vivado 2020.2. If you have an other version
+of Vivado installation, you should just create and export the block design bd_ultra96_v2.tcl with fabric clock
+PL0 is enabled and made external.
+
 ### ulx3s_*
 
 https://radiona.org/ulx3s
@@ -248,14 +270,14 @@ http://www.hseda.com/product/xilinx/XC6SLX9COREV1.0/XC6SLX9CORE.htm
 ### zcu102
 
 https://www.xilinx.com/products/boards-and-kits/zcu102.html
-
+1
 ### zcu106
 
 https://www.xilinx.com/products/boards-and-kits/zcu106.html
 
 ### zrtech_v2
 
-http://land-boards.com/blwiki/index.php?title=ZrTech_V2_EP4CE6_Cyclone_IV_FPGA_EP4CE6E22C8N_Development_Board_USB_V2
+http://land-boards.com/blwiki/index.php?title=Cyclone_IV_FPGA_EP4CE6E22C8N_Development_Board_USB_V2
 
 ### Zybo Z7-10 & Zybo Z7-20
 

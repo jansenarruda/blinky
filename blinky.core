@@ -1,5 +1,5 @@
 CAPI=2:
-name : fusesoc:utils:blinky:1.0
+name : fusesoc:utils:blinky:1.1
 
 filesets:
   ac701:
@@ -135,7 +135,7 @@ filesets:
     files:
       - go_board/pinout.pcf : {file_type : PCF}
       - go_board/blinky_go_board.v : {file_type : verilogSource}
-  
+
   ice40hx1k_evb:
     files: [ice40hx1k_evb/pinout.pcf : {file_type : PCF}]
 
@@ -184,6 +184,8 @@ filesets:
 
   mini_s7: {files: [mini_s7/blinky.xdc : {file_type : xdc}]}
 
+  myir_fz3: {files: [myir_fz3/blinky.xdc : {file_type : xdc}]}
+
   nexys_4: {files: [nexys_4/blinky.xdc : {file_type : xdc}]}
 
   nexys_a7: {files: [nexys_a7/blinky.xdc : {file_type : xdc}]}
@@ -205,6 +207,11 @@ filesets:
 
   rtl:
     files: [blinky.v : {file_type : verilogSource}]
+
+  rz_easyfpga_a2.x:
+    files:
+      - rz_easyfpga_a2.x/rz_easyfpga_a2.x.sdc : {file_type : SDC}
+      - rz_easyfpga_a2.x/pinmap.tcl    : {file_type: tclSource}
 
   proginfo:
     files: [sw/proginfo.py : {file_type : user, copyto : proginfo.py}]
@@ -228,6 +235,13 @@ filesets:
 
   tinyfpga_bx:
     files: [tinyfpga_bx/pinout.pcf : {file_type : PCF}]
+  
+  ultra96_v2:
+    files:
+      - ultra96_v2/blinky_ultra96_v2.v : {file_type : verilogSource}
+      - ultra96_v2/design_1_wrapper.v : {file_type : verilogSource}  
+      - ultra96_v2/blinky.xdc : {file_type : xdc}
+      - ultra96_v2/bd_ultra96_v2.tcl : {file_type : tclSource}
 
   ulx3s:
     files:
@@ -289,6 +303,16 @@ filesets:
     files:
       - stlv7325/blinky.xdc : {file_type : xdc}
       - stlv7325/blinky_stlv7325.sv : {file_type : systemVerilogSource}
+
+  Wukong_v1:
+    files: 
+      - QMTECH_Artix7_Wukong/Wukong_v1.xdc : {file_type : xdc}
+      - QMTECH_Artix7_Wukong/blinky.v : {file_type : verilogSource}
+
+  Wukong_v2:
+    files: 
+      - QMTECH_Artix7_Wukong/Wukong_v2.xdc : {file_type : xdc}
+      - QMTECH_Artix7_Wukong/blinky.v : {file_type : verilogSource}
 
 targets:
   default: &default
@@ -748,6 +772,16 @@ targets:
         part : xc7s25ftgb196-1
     toplevel : blinky
 
+  myir_fz3:
+    default_tool: vivado
+    description: MYiR Tech FZ3 Card - Deep Learning Accelerator Card
+    filesets: [rtl, myir_fz3]
+    parameters : [clk_freq_hz=25000000]
+    tools:
+      vivado:
+        part : xczu3eg-sfvc784-1-e
+    toplevel : blinky
+
   nexys_4:
     default_tool: vivado
     filesets : [rtl, nexys_4]
@@ -819,6 +853,16 @@ targets:
         part : xc7z020clg400-1
     toplevel : blinky_pynq_z2
 
+  rz_easyfpga_a2.x:
+    default_tool : quartus
+    filesets : [rtl, rz_easyfpga_a2.x]
+    parameters : [clk_freq_hz=50000000]
+    tools:
+      quartus:
+        family : Cyclone IV E
+        device : EP4CE6E22C8
+    toplevel: blinky
+
   sim:
     default_tool: icarus
     filesets : [rtl, tb]
@@ -860,6 +904,15 @@ targets:
         pnr: next
     toplevel : blinky
 
+  ultra96_v2:
+    default_tool : vivado
+    description : Zynq UltraScale+ MPSoC Ultra96-v2 Development Board 
+    filesets : [rtl, ultra96_v2]
+    tools:
+      vivado:
+        part : xczu3eg-sbva484-1-i
+    toplevel : blinky_ultra96_v2
+
   ulx3s_45: &ulx3s
     default_tool : trellis
     description : Radiona ULX3S board with 45k FPGA
@@ -890,6 +943,36 @@ targets:
         nextpnr_options : [--up5k]
         pnr: next
     toplevel : blinky_upduino2
+
+  Wukong_100t_v1:
+    default_tool: vivado
+    description : QMTECH Artix-7 XC7A100T Wukong Board first revision
+    filesets : [Wukong_v1]
+    parameters : [clk_freq_hz=50000000]
+    tools:
+      vivado:
+        part : xc7a100tfgg676-2
+    toplevel : blinky
+
+  Wukong_100t_v2:
+    default_tool: vivado
+    description : QMTECH Artix-7 XC7A100T Wukong Board second revision
+    filesets : [Wukong_v2]
+    parameters : [clk_freq_hz=50000000]
+    tools:
+      vivado:
+        part : xc7a100tfgg676-2
+    toplevel : blinky
+
+  Wukong_200t_v2:
+    default_tool: vivado
+    description : QMTECH Artix-7 XC7A200T Wukong Board second revision
+    filesets : [Wukong_v2]
+    parameters : [clk_freq_hz=50000000]
+    tools:
+      vivado:
+        part : xc7a200tfbg676-1
+    toplevel : blinky
 
   xc6sl9_hseda_eda6.1:
     default_tool : ise
